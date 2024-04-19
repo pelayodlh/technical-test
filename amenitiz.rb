@@ -29,9 +29,10 @@ total_price = 0
 loop do
   user_choice = gets.chomp
 
-  if user_choice != "GR1" || "CF1" || "SR1"
+  if user_choice != "GR1" && user_choice != "CF1" && user_choice != "SR1"
     puts "We don't have that product in the warehouse, sorry. Please, write the correct code."
   end
+
 
   case user_choice
   when "GR1", "SR1", "CF1"
@@ -50,7 +51,7 @@ loop do
       else
         total_price += quantity * product_price
       end
-    elsif quantity == 2
+    elsif product_choice == :GR1 && quantity == 2
       puts "Clever! You get one for free."
       total_price += product_price
     else
@@ -59,7 +60,7 @@ loop do
 
     basket[product_name] += quantity
 
-    puts "You have bought #{quantity} #{product_name}. Your total price so far is: #{total_price}€."
+    puts "You have bought #{quantity} units of #{product_name}. Your total price so far is: #{total_price}€."
     puts "If you want to buy something else, write the code of the product: GR1, SR1 or CF1. If you want to pay, just write 'exit'."
   when "exit"
     break
