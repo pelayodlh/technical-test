@@ -29,6 +29,10 @@ total_price = 0
 loop do
   user_choice = gets.chomp
 
+  if user_choice != "GR1" || "CF1" || "SR1"
+    puts "We don't have that product in the warehouse, sorry. Please, write the correct code."
+  end
+
   case user_choice
   when "GR1", "SR1", "CF1"
     puts "How many?"
@@ -56,8 +60,7 @@ loop do
     basket[product_name] += quantity
 
     puts "You have bought #{quantity} #{product_name}. Your total price so far is: #{total_price}€."
-    puts "If you want to buy something else, write the code of the product: GR1, SR1 or CF1. If you want to pay, just write 'exit'"
-
+    puts "If you want to buy something else, write the code of the product: GR1, SR1 or CF1. If you want to pay, just write 'exit'."
   when "exit"
     break
   end
@@ -65,7 +68,7 @@ end
 
 puts "Your basket contains: "
 basket.each do |product_name, quantity|
-  puts "#{quantity} units of #{product_name}"
+  puts "#{quantity} units of #{product_name}."
 end
 puts "Total price: #{total_price}€"
 puts "Thank you for your shopping! See you soon, buddy!"
