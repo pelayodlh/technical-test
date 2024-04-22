@@ -25,6 +25,7 @@ puts ""
 
 basket = Hash.new(0)
 total_price = 0
+gr1_offer_applied = false
 
 loop do
   user_choice = gets.chomp
@@ -51,9 +52,13 @@ loop do
       else
         total_price += quantity * product_price
       end
-    elsif product_choice == :GR1 && quantity == 2
+    elsif product_choice == :GR1 && quantity == 2 && gr1_offer_applied == false
       puts "Clever! You get one for free."
       total_price += product_price
+      gr1_offer_applied = true
+    elsif product_choice == :GR1 && quantity == 2 && gr1_offer_applied == true
+      total_price += product_price * quantity
+      puts "One offer per customer, buddy!"
     else
       total_price += product_price
     end
